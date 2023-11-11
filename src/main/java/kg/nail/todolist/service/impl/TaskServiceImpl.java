@@ -33,9 +33,7 @@ public class TaskServiceImpl implements TaskService {
         Task task = taskRepository.findTaskById(taskId).orElseThrow(
                 () -> new CustomException("Нет такой задачи!", HttpStatus.NOT_FOUND)
         );
-        task.setId(taskDTO.getId());
-        task.setTitle(taskDTO.getTitle());
-        task.setDescription(taskDTO.getDescription());
+        task.setCompleted(true);
         return taskMapper.toTaskDTO(taskRepository.save(task));
     }
 
